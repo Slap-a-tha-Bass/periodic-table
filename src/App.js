@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
+import { CardContainerRotate } from "./components/Card";
 
 import Card from "./components/Card";
 
@@ -66,7 +67,8 @@ const NumbersLeft = styled.div`
 const H1 = styled.h1`
   font-size: 4rem;
   color: whitesmoke;
-  font-weight: 300;
+  font-weight: 400;
+  filter: brightness(2);
   display: flex;
   justify-content: center;
   margin-bottom: 1vw;
@@ -77,6 +79,33 @@ const H1 = styled.h1`
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+`;
+const LabelContainer = styled.div`
+  width: ${(props) => props.containerWidth || 52.5}vw;
+  margin-left: ${(props) => props.marL || 0}vw;
+`;
+const LabelDiv = styled.div`
+  display: flex;
+  margin-left: ${(props) => props.marL || 0}vw;
+  margin-right: ${(props) => props.marR || 0}vw;
+  padding-left: ${(props) => props.padL || 0}vw;
+  padding-right: ${(props) => props.padR || 0}vw;
+`;
+const LabelTitles = styled.div`
+  display: ${(props) => props.display || ""};
+  justify-content: ${(props) => props.justifyContent || ""};
+  margin-left: ${(props) => props.marL || 0}vw;
+  margin-right: ${(props) => props.marR || 0}vw;
+  padding-left: ${(props) => props.padL || 0}vw;
+  padding-right: ${(props) => props.padR || 0}vw;
+  padding: 5px;
+  background-color: ${(props) => props.bgColor || "gray"};
+  color: ${(props) => props.textColor || "whitesmoke"};
+  border-left: ${(props) => props.borderLeft};
+  border-right: ${(props) => props.borderRight};
+  border-bottom: ${(props) => props.borderBottom};
+  border-top: ${(props) => props.borderTop};
+  width: ${(props) => props.cardWidth || 5.25}vw;
 `;
 function App() {
   const [elements, setElements] = useState([]);
@@ -102,14 +131,15 @@ function App() {
             <NumbersLeft color="#232323">0</NumbersLeft>
             {emptyArray.fill(null).map((newDiv, index) => (
               <FlexBox key={index}>
-                <Card
+                <LabelTitles
                   bgColor="#232323"
                   textColor="white"
                   borderColor="#232323"
-                  atomicNumber={index + 1}
                   display="flex"
                   justifyContent="center"
-                />
+                >
+                  {index + 1}
+                </LabelTitles>
               </FlexBox>
             ))}
           </TopDivSeparator>
@@ -129,15 +159,52 @@ function App() {
                 atomicMass={elements[0].atomicMass}
                 atomicNumber={elements[0].atomicNumber}
               />
+              <Card
+                bgColor="#232323"
+                borderColor="#232323"
+                name="Name"
+                symbol="Symbol"
+                fontSize={1.25}
+                atomicMass="Mass"
+                atomicNumber="#"
+                cursor="auto"
+              />
+              <LabelContainer containerWidth={78.75}>
+                <FlexBox>
+                  <LabelTitles bgColor="#232323" />
+                  <LabelTitles bgColor="#232323" />
+                  <LabelTitles bgColor="#232323" />
+                  <LabelTitles bgColor="#232323" />
+                  <LabelTitles bgColor="#232323" borderTop="1px solid white" />
+                  <LabelTitles
+                    bgColor="#232323"
+                    fontSize={1}
+                    borderRight="1px solid white"
+                    borderTop="1px solid white"
+                  >
+                    Metals
+                  </LabelTitles>
+                  <LabelTitles bgColor="#232323" />
+                  <LabelTitles
+                    bgColor="#232323"
+                    fontSize={1}
+                    borderLeft="1px solid white"
+                    borderTop="1px solid white"
+                  >
+                    Nonmetals
+                  </LabelTitles>
+                  <LabelTitles bgColor="none" borderTop="1px solid white" />
+                </FlexBox>
+              </LabelContainer>
+              <Card
+                bgColor="purple"
+                symbolColor="rgb(255, 81, 0)"
+                name={elements[1].name}
+                symbol={elements[1].symbol}
+                atomicMass={elements[1].atomicMass}
+                atomicNumber={elements[1].atomicNumber}
+              />
             </FlexBox>
-            <Card
-              bgColor="purple"
-              symbolColor="rgb(255, 81, 0)"
-              name={elements[1].name}
-              symbol={elements[1].symbol}
-              atomicMass={elements[1].atomicMass}
-              atomicNumber={elements[1].atomicNumber}
-            />
           </TopDivSeparator>
 
           {/* ROW 2 */}
@@ -161,8 +228,56 @@ function App() {
                 atomicMass={elements[3].atomicMass}
                 atomicNumber={elements[3].atomicNumber}
               />
-            </FlexBox>
-            <FlexBox>
+              <LabelContainer>
+                <FlexBox>
+                  <LabelTitles bgColor="#232323" />
+                  <LabelTitles bgColor="#232323" />
+                  <LabelTitles bgColor="#232323" />
+                  <LabelTitles bgColor="#232323" />
+                  <LabelTitles bgColor="#232323" />
+                  <LabelDiv>
+                    <CardContainerRotate
+                      fontSize={0.8}
+                      cardHeight={3}
+                      cardWidth={7}
+                      bgColor="green"
+                      marL={-1}
+                    >
+                      Reactive nonmetals
+                    </CardContainerRotate>
+                    <CardContainerRotate
+                      fontSize={0.8}
+                      cardHeight={3}
+                      cardWidth={7}
+                      bgColor="purple"
+                      marL={-3.5}
+                    >
+                      Noble gases
+                    </CardContainerRotate>
+                  </LabelDiv>
+                  <LabelTitles bgColor="#232323" />
+                  <LabelDiv marR={5}>
+                    <CardContainerRotate
+                      fontSize={0.8}
+                      cardHeight={3}
+                      cardWidth={7}
+                      bgColor="green"
+                      marL={-1}
+                    >
+                      Reactive nonmetals
+                    </CardContainerRotate>
+                    <CardContainerRotate
+                      fontSize={0.8}
+                      cardHeight={3}
+                      cardWidth={7}
+                      bgColor="purple"
+                      marL={-3.5}
+                    >
+                      Noble gases
+                    </CardContainerRotate>
+                  </LabelDiv>
+                </FlexBox>
+              </LabelContainer>
               <Card
                 bgColor="teal"
                 name={elements[4].name}
@@ -233,8 +348,7 @@ function App() {
                 atomicMass={elements[11].atomicMass}
                 atomicNumber={elements[11].atomicNumber}
               />
-            </FlexBox>
-            <FlexBox>
+              <LabelContainer></LabelContainer>
               <Card
                 bgColor="blue"
                 name={elements[12].name}

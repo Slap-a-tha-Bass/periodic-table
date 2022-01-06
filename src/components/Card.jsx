@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const CardContainer = styled.div`
@@ -12,11 +12,30 @@ const CardContainer = styled.div`
   background-color: ${(props) => props.bgColor || "gray"};
   color: ${(props) => props.textColor || "whitesmoke"};
   border: 1px solid ${(props) => props.borderColor || "whitesmoke"};
-  width: 5.25vw;
-  opacity: 0.9;
+  width: ${(props) => props.cardWidth || 5.25}vw;
   &:hover {
-    cursor: pointer;
-    opacity: 1;
+    cursor: ${(props) => props.cursor || "pointer"};
+    filter: brightness(1.5);
+  }
+`;
+export const CardContainerRotate = styled.div`
+  display: ${(props) => props.display || ""};
+  font-size: ${(props) => props.fontSize || 1.5}rem;
+  transform: rotate(90deg);
+  justify-content: ${(props) => props.justifyContent || ""};
+  margin-left: ${(props) => props.marL || 0}vw;
+  margin-right: ${(props) => props.marR || 0}vw;
+  padding-left: ${(props) => props.padL || 0}vw;
+  padding-right: ${(props) => props.padR || 0}vw;
+  padding: 5px;
+  background-color: ${(props) => props.bgColor || "gray"};
+  color: ${(props) => props.textColor || "whitesmoke"};
+  border: 1px solid ${(props) => props.borderColor || "whitesmoke"};
+  width: ${(props) => props.cardWidth || 5.25}vw;
+  height: ${(props) => props.cardHeight || 5.25}vw;
+  &:hover {
+    cursor: ${(props) => props.cursor || "pointer"};
+    filter: brightness(1.5);
   }
 `;
 const AtomicNumber = styled.h1`
@@ -24,10 +43,10 @@ const AtomicNumber = styled.h1`
   margin: 0;
 `;
 const Symbol = styled.h1`
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: ${(props) => props.fontSize || 1.5}rem;
+  font-weight: 500;
   margin: 0;
-  color: ${props => props.symbolColor || "white"};
+  color: ${(props) => props.symbolColor || "white"};
 `;
 const Name = styled.h1`
   font-size: 0.7rem;
@@ -51,8 +70,20 @@ const Card = ({
   marR,
   padL,
   padR,
-  symbolColor
+  symbolColor,
+  fontSize,
+  cardWidth,
+  cardHeight,
+  cursor,
+  rotate,
 }) => {
+    // const [oneElement, setOneElement] = useState();
+    // useEffect(() => {
+        
+    // }, [atomicNumber])
+    const handleClick = () => {
+        console.log('Clicked')
+    }
   return (
     <CardContainer
       bgColor={bgColor}
@@ -64,11 +95,16 @@ const Card = ({
       marR={marR}
       padL={padL}
       padR={padR}
+      cardWidth={cardWidth}
+      cardHeight={cardHeight}
+      cursor={cursor}
+      rotate={rotate}
+      onClick={handleClick}
     >
       <AtomicNumber atomicNumber={atomicNumber}>{atomicNumber}</AtomicNumber>
-      <Symbol 
-      symbolColor={symbolColor}
-      symbol={symbol}>{symbol}</Symbol>
+      <Symbol fontSize={fontSize} symbolColor={symbolColor} symbol={symbol}>
+        {symbol}
+      </Symbol>
       <Name name={name}>{name}</Name>
       <AtomicMass atomicMass={atomicMass}>{atomicMass}</AtomicMass>
     </CardContainer>
