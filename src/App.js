@@ -41,7 +41,7 @@ const Main = styled.div`
 `;
 const Container = styled.div`
   background-color: var(--bg);
-  padding: 2.25rem;
+  padding: 2.2vw;
 `;
 const TopDivSeparator = styled.div`
   display: flex;
@@ -49,6 +49,34 @@ const TopDivSeparator = styled.div`
 `;
 const FlexBox = styled.div`
   display: flex;
+  margin-left: ${(props) => props.marL || 0}vw;
+  margin-right: ${(props) => props.marR || 0}vw;
+  padding-left: ${(props) => props.padL || 0}vw;
+  padding-right: ${(props) => props.padR || 0}vw;
+`;
+const NumbersLeft = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 0.5vw;
+  font-size: 1rem;
+  font-weight: 300;
+  color: ${(props) => props.color || "whitesmoke"};
+`;
+const H1 = styled.h1`
+  font-size: 4rem;
+  color: whitesmoke;
+  font-weight: 300;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1vw;
+  background: -webkit-linear-gradient(left, green, purple);
+  background: -o-linear-gradient(right, green, purple);
+  background: -moz-linear-gradient(right, green, purple);
+  background: linear-gradient(to right, green, purple);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 `;
 function App() {
   const [elements, setElements] = useState([]);
@@ -63,30 +91,62 @@ function App() {
       })
       .catch((error) => console.log("Error fetching", error));
   }, []);
-
+  const emptyArray = new Array(18);
   return (
     <Main>
       <GlobalStyle />
       {hasLoaded && (
         <Container>
+          <H1>Periodic Table of Elements</H1>
           <TopDivSeparator>
-            <Card
-              bgColor="green"
-              name={elements[0].name}
-              symbol={elements[0].symbol}
-              atomicMass={elements[0].atomicMass}
-              atomicNumber={elements[0].atomicNumber}
-            />
+            <NumbersLeft color="#232323">0</NumbersLeft>
+            {emptyArray.fill(null).map((newDiv, index) => (
+              <FlexBox key={index}>
+                <Card
+                  bgColor="#232323"
+                  textColor="white"
+                  borderColor="#232323"
+                  atomicNumber={index + 1}
+                  display="flex"
+                  justifyContent="center"
+                />
+              </FlexBox>
+            ))}
+          </TopDivSeparator>
+
+          {/* ROW 1 */}
+          {/* ROW 1 */}
+          {/* ROW 1 */}
+
+          <TopDivSeparator>
+            <FlexBox>
+              <NumbersLeft>1</NumbersLeft>
+              <Card
+                bgColor="green"
+                symbolColor="rgb(255, 81, 0)"
+                name={elements[0].name}
+                symbol={elements[0].symbol}
+                atomicMass={elements[0].atomicMass}
+                atomicNumber={elements[0].atomicNumber}
+              />
+            </FlexBox>
             <Card
               bgColor="purple"
+              symbolColor="rgb(255, 81, 0)"
               name={elements[1].name}
               symbol={elements[1].symbol}
               atomicMass={elements[1].atomicMass}
               atomicNumber={elements[1].atomicNumber}
             />
           </TopDivSeparator>
+
+          {/* ROW 2 */}
+          {/* ROW 2 */}
+          {/* ROW 2 */}
+
           <TopDivSeparator>
             <FlexBox>
+              <NumbersLeft>2</NumbersLeft>
               <Card
                 bgColor="rgb(97, 56, 29)"
                 name={elements[2].name}
@@ -119,6 +179,7 @@ function App() {
               />
               <Card
                 bgColor="green"
+                symbolColor="rgb(255, 81, 0)"
                 name={elements[6].name}
                 symbol={elements[6].symbol}
                 atomicMass={elements[6].atomicMass}
@@ -126,6 +187,7 @@ function App() {
               />
               <Card
                 bgColor="green"
+                symbolColor="rgb(255, 81, 0)"
                 name={elements[7].name}
                 symbol={elements[7].symbol}
                 atomicMass={elements[7].atomicMass}
@@ -133,6 +195,7 @@ function App() {
               />
               <Card
                 bgColor="green"
+                symbolColor="rgb(255, 81, 0)"
                 name={elements[8].name}
                 symbol={elements[8].symbol}
                 atomicMass={elements[8].atomicMass}
@@ -140,6 +203,7 @@ function App() {
               />
               <Card
                 bgColor="purple"
+                symbolColor="rgb(255, 81, 0)"
                 name={elements[9].name}
                 symbol={elements[9].symbol}
                 atomicMass={elements[9].atomicMass}
@@ -147,8 +211,14 @@ function App() {
               />
             </FlexBox>
           </TopDivSeparator>
+
+          {/* ROW 3 */}
+          {/* ROW 3 */}
+          {/* ROW 3 */}
+
           <TopDivSeparator>
             <FlexBox>
+              <NumbersLeft>3</NumbersLeft>
               <Card
                 bgColor="rgb(97, 56, 29)"
                 name={elements[10].name}
@@ -195,6 +265,7 @@ function App() {
               />
               <Card
                 bgColor="green"
+                symbolColor="rgb(255, 81, 0)"
                 name={elements[16].name}
                 symbol={elements[16].symbol}
                 atomicMass={elements[16].atomicMass}
@@ -202,6 +273,7 @@ function App() {
               />
               <Card
                 bgColor="purple"
+                symbolColor="rgb(255, 81, 0)"
                 name={elements[17].name}
                 symbol={elements[17].symbol}
                 atomicMass={elements[17].atomicMass}
@@ -209,7 +281,13 @@ function App() {
               />
             </FlexBox>
           </TopDivSeparator>
+
+          {/* ROW 4 */}
+          {/* ROW 4 */}
+          {/* ROW 4 */}
+
           <FlexBox>
+            <NumbersLeft>4</NumbersLeft>
             <Card
               bgColor="rgb(97, 56, 29)"
               name={elements[18].name}
@@ -331,13 +409,20 @@ function App() {
             />
             <Card
               bgColor="purple"
+              symbolColor="rgb(255, 81, 0)"
               name={elements[35].name}
               symbol={elements[35].symbol}
               atomicMass={elements[35].atomicMass}
               atomicNumber={elements[35].atomicNumber}
             />
           </FlexBox>
+
+          {/* ROW 5 */}
+          {/* ROW 5 */}
+          {/* ROW 5 */}
+
           <FlexBox>
+            <NumbersLeft>5</NumbersLeft>
             <Card
               bgColor="rgb(97, 56, 29)"
               name={elements[36].name}
@@ -459,13 +544,20 @@ function App() {
             />
             <Card
               bgColor="purple"
+              symbolColor="rgb(255, 81, 0)"
               name={elements[53].name}
               symbol={elements[53].symbol}
               atomicMass={elements[53].atomicMass}
               atomicNumber={elements[53].atomicNumber}
             />
           </FlexBox>
+
+          {/* ROW 6 */}
+          {/* ROW 6 */}
+          {/* ROW 6 */}
+
           <FlexBox>
+            <NumbersLeft>6</NumbersLeft>
             <Card
               bgColor="rgb(97, 56, 29)"
               name={elements[54].name}
@@ -481,8 +573,10 @@ function App() {
               atomicNumber={elements[55].atomicNumber}
             />
             <Card
-              bgColor  
-              symbol="57-71"
+              bgColor="whitesmoke"
+              textColor="black"
+              borderColor="black"
+              atomicNumber="57-71"
             />
             <Card
               bgColor="brown"
@@ -562,21 +656,21 @@ function App() {
               atomicNumber={elements[81].atomicNumber}
             />
             <Card
-              bgColor="teal"
+              bgColor="blue"
               name={elements[82].name}
               symbol={elements[82].symbol}
               atomicMass={elements[82].atomicMass}
               atomicNumber={elements[82].atomicNumber}
             />
             <Card
-              bgColor="teal"
+              bgColor="blue"
               name={elements[83].name}
               symbol={elements[83].symbol}
               atomicMass={elements[83].atomicMass}
               atomicNumber={elements[83].atomicNumber}
             />
             <Card
-              bgColor="green"
+              bgColor="teal"
               name={elements[84].name}
               symbol={elements[84].symbol}
               atomicMass={elements[84].atomicMass}
@@ -584,10 +678,144 @@ function App() {
             />
             <Card
               bgColor="purple"
+              symbolColor="rgb(255, 81, 0)"
               name={elements[85].name}
               symbol={elements[85].symbol}
               atomicMass={elements[85].atomicMass}
               atomicNumber={elements[85].atomicNumber}
+            />
+          </FlexBox>
+
+          {/* ROW 7 */}
+          {/* ROW 7 */}
+          {/* ROW 7 */}
+
+          <FlexBox>
+            <NumbersLeft>7</NumbersLeft>
+            <Card
+              bgColor="rgb(97, 56, 29)"
+              name={elements[86].name}
+              symbol={elements[86].symbol}
+              atomicMass={elements[86].atomicMass}
+              atomicNumber={elements[86].atomicNumber}
+            />
+            <Card
+              bgColor="rgb(199, 119, 65)"
+              name={elements[87].name}
+              symbol={elements[87].symbol}
+              atomicMass={elements[87].atomicMass}
+              atomicNumber={elements[87].atomicNumber}
+            />
+            <Card
+              bgColor="whitesmoke"
+              textColor="black"
+              borderColor="black"
+              atomicNumber="89-103"
+            />
+            <Card
+              bgColor="brown"
+              name={elements[103].name}
+              symbol={elements[103].symbol}
+              atomicMass={elements[103].atomicMass}
+              atomicNumber={elements[103].atomicNumber}
+            />
+            <Card
+              bgColor="brown"
+              name={elements[104].name}
+              symbol={elements[104].symbol}
+              atomicMass={elements[104].atomicMass}
+              atomicNumber={elements[104].atomicNumber}
+            />
+            <Card
+              bgColor="brown"
+              name={elements[105].name}
+              symbol={elements[105].symbol}
+              atomicMass={elements[105].atomicMass}
+              atomicNumber={elements[105].atomicNumber}
+            />
+            <Card
+              bgColor="brown"
+              name={elements[106].name}
+              symbol={elements[106].symbol}
+              atomicMass={elements[106].atomicMass}
+              atomicNumber={elements[106].atomicNumber}
+            />
+            <Card
+              bgColor="brown"
+              name={elements[107].name}
+              symbol={elements[107].symbol}
+              atomicMass={elements[107].atomicMass}
+              atomicNumber={elements[107].atomicNumber}
+            />
+            <Card
+              bgColor
+              name={elements[108].name}
+              symbol={elements[108].symbol}
+              atomicMass={elements[108].atomicMass}
+              atomicNumber={elements[108].atomicNumber}
+            />
+            <Card
+              bgColor
+              name={elements[109].name}
+              symbol={elements[109].symbol}
+              atomicMass={elements[109].atomicMass}
+              atomicNumber={elements[109].atomicNumber}
+            />
+            <Card
+              bgColor
+              name={elements[110].name}
+              symbol={elements[110].symbol}
+              atomicMass={elements[110].atomicMass}
+              atomicNumber={elements[110].atomicNumber}
+            />
+            <Card
+              bgColor
+              name={elements[111].name}
+              symbol={elements[111].symbol}
+              atomicMass={elements[111].atomicMass}
+              atomicNumber={elements[111].atomicNumber}
+            />
+            <Card
+              bgColor
+              name={elements[112].name}
+              symbol={elements[112].symbol}
+              atomicMass={elements[112].atomicMass}
+              atomicNumber={elements[112].atomicNumber}
+            />
+            <Card
+              bgColor
+              name={elements[113].name}
+              symbol={elements[113].symbol}
+              atomicMass={elements[113].atomicMass}
+              atomicNumber={elements[113].atomicNumber}
+            />
+            <Card
+              bgColor
+              name={elements[114].name}
+              symbol={elements[114].symbol}
+              atomicMass={elements[114].atomicMass}
+              atomicNumber={elements[114].atomicNumber}
+            />
+            <Card
+              bgColor
+              name={elements[115].name}
+              symbol={elements[115].symbol}
+              atomicMass={elements[115].atomicMass}
+              atomicNumber={elements[115].atomicNumber}
+            />
+            <Card
+              bgColor
+              name={elements[116].name}
+              symbol={elements[116].symbol}
+              atomicMass={elements[116].atomicMass}
+              atomicNumber={elements[116].atomicNumber}
+            />
+            <Card
+              bgColor
+              name={elements[117].name}
+              symbol={elements[117].symbol}
+              atomicMass={elements[117].atomicMass}
+              atomicNumber={elements[117].atomicNumber}
             />
           </FlexBox>
         </Container>
