@@ -4,10 +4,11 @@
   --headerBg: #1c1c1c;
   --headerBoxShadow: rgba(0, 0, 0, 0.8) 0 1px 4px;
   --brown: rgb(124, 71, 35);
-  --lightBrown: rgb(199, 119, 65);
-  --darkBrown: rgb(97, 56, 29);
-  --purple: rgb(85, 46, 212);
-  --green: rgb(0, 0, 0);
+  --lightBrown: rgb(151, 88, 45);
+  --darkBrown: rgb(70, 42, 24);
+  --purple: rgb(194, 156, 253);
+  --green: rgb(84, 8, 184);
+  --hexColor: #CC80FF;
 }
 
 body.light {
