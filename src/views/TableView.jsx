@@ -181,7 +181,7 @@ function TableView() {
               />
               <LabelContainer containerWidth={78.75}>
                 <FlexBox>
-                  <LabelTitles bgColor="#232323" />
+                  <LabelTitles bgColor="none" />
                   <LabelTitles bgColor="#232323" borderTop="1px solid white" />
                   <LabelTitles bgColor="#232323" borderTop="1px solid white" />
                   <LabelTitles bgColor="#232323" borderTop="1px solid white" />
