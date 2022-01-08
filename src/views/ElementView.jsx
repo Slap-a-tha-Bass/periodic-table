@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import Card from "../components/Card";
+import LargeCard from "../components/LargeCard";
 import { GlobalStyle, H1 } from "./TableView";
 
 const CenterDivContainer = styled.div`
@@ -20,9 +20,9 @@ const Button = styled.button`
   background: linear-gradient(to right, green, purple);
   border: none;
   border-radius: 10px;
-  padding: 1rem;
+  padding: calc(0.5rem + 1vw);
   font-family: "Montserrat", sans-serif;
-  font-size: 2rem;
+  font-size: calc(1rem + 1vw);
   color: whitesmoke;
   &:hover {
     cursor: pointer;
@@ -52,22 +52,14 @@ const ElementView = () => {
       {hasLoaded && <H1>More about {elements[Number(id) - 1].name}</H1>}
       {hasLoaded && (
         <CenterDivContainer>
-          <Card
+          <LargeCard
             key={id}
             name={elements[Number(id) - 1].name}
-            NAMEfontSize={4}
             symbol={elements[Number(id - 1)].symbol}
-            fontSize={14}
             atomicMass={elements[Number(id) - 1].atomicMass}
-            AMfontSize={4}
             atomicNumber={elements[Number(id) - 1].atomicNumber}
-            ANfontSize={4}
-            cardWidth={30}
-            cardHeight={30}
-            bgColor="black"
-            borderColor="black"
           />
-          <Card
+          <LargeCard
             isPreview
             atomicRadius={elements[Number(id) - 1].atomicRadius}
             boilingPoint={elements[Number(id) - 1].boilingPoint}
@@ -84,7 +76,7 @@ const ElementView = () => {
             meltingPoint={elements[Number(id) - 1].meltingPoint}
             oxidationStates={elements[Number(id) - 1].oxidationStates}
             standardState={elements[Number(id) - 1].standardState}
-            vanDelWaalsRadius={elements[Number(id) - 1].vanDelWaalsRadius}
+            vanDerWaalsRadius={elements[Number(id) - 1].vanDelWaalsRadius}
             yearDiscovered={elements[Number(id) - 1].yearDiscovered}
             cardWidth={30}
             cardHeight={30}
@@ -94,7 +86,7 @@ const ElementView = () => {
         </CenterDivContainer>
       )}
       <CenterDivContainer>
-        <Button onClick={handleGoBack}>Back to Table</Button>
+        {hasLoaded && <Button onClick={handleGoBack}>Back to Table</Button>}
       </CenterDivContainer>
     </div>
   );

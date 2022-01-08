@@ -9,7 +9,7 @@ export const CardContainer = styled.div`
   margin-right: ${(props) => props.marR || 0}vw;
   padding-left: ${(props) => props.padL || 0}vw;
   padding-right: ${(props) => props.padR || 0}vw;
-  padding: 5px;
+  padding: 2px;
   background-color: ${(props) => props.bgColor || "gray"};
   color: ${(props) => props.textColor || "whitesmoke"};
   border: 1px solid ${(props) => props.borderColor || "whitesmoke"};
@@ -32,7 +32,7 @@ export const CardContainerRotate = styled.div`
   margin-bottom: ${(props) => props.marB || 0}vw;
   padding-left: ${(props) => props.padL || 0}vw;
   padding-right: ${(props) => props.padR || 0}vw;
-  padding: 5px;
+  padding: 2px;
   background-color: ${(props) => props.bgColor || "gray"};
   color: ${(props) => props.textColor || "whitesmoke"};
   border: 1px solid ${(props) => props.borderColor || "whitesmoke"};
@@ -44,33 +44,22 @@ export const CardContainerRotate = styled.div`
   }
 `;
 const AtomicNumber = styled.h1`
-  font-size: ${(props) => props.ANfontSize || 1}rem;
+  font-size: calc(0.25rem + 0.75vw);
   margin: 0;
 `;
 const Symbol = styled.h1`
-  font-size: ${(props) => props.fontSize || 1.5}rem;
+  font-size: calc(1rem + 1vw);
   font-weight: 600;
   margin: 0;
   color: ${(props) => props.symbolColor || "white"};
 `;
 const Name = styled.h1`
-  font-size: ${(props) => props.NAMEfontSize || 0.7}rem;
+  font-size: calc(0.25rem + 0.5vw);
   margin: 0;
 `;
 const AtomicMass = styled.h1`
-  font-size: ${(props) => props.AMfontSize || 0.75}rem;
+  font-size: calc(0.25rem + 0.5vw);
   margin: 0;
-`;
-const UL = styled.ul`
-  font-size: ${(props) => props.ULfontSize || 1.5}rem;
-  margin: 0;
-`;
-const LI = styled.div`
-  display: flex;
-  justify-content: space-between;
-  font-size: ${(props) => props.LIfontSize || 1.5}rem;
-  margin: 0;
-  border-bottom: 1px solid gray;
 `;
 const CustomLink = styled(Link)`
   text-decoration: none;
@@ -80,22 +69,6 @@ const Card = ({
   symbol,
   atomicMass,
   atomicNumber,
-  atomicRadius,
-  boilingPoint,
-  bondingType,
-  cpkHexColor,
-  density,
-  electronAffinity,
-  electronegativity,
-  electronicConfiguration,
-  groupBlock,
-  ionRadius,
-  ionizationEnergy,
-  meltingPoint,
-  oxidationStates,
-  standardState,
-  vanDelWaalsRadius,
-  yearDiscovered,
   bgColor,
   textColor,
   borderColor,
@@ -108,16 +81,11 @@ const Card = ({
   padL,
   padR,
   symbolColor,
-  fontSize,
-  ANfontSize,
-  NAMEfontSize,
-  AMfontSize,
   cardWidth,
   cardHeight,
   cursor,
   rotate,
   borderRadius,
-  isPreview,
 }) => {
   return (
     <CustomLink to={`/${atomicNumber}`}>
@@ -139,97 +107,18 @@ const Card = ({
         rotate={rotate}
         borderRadius={borderRadius}
       >
-        <AtomicNumber atomicNumber={atomicNumber} ANfontSize={ANfontSize}>
+        <AtomicNumber atomicNumber={atomicNumber} >
           {atomicNumber}
         </AtomicNumber>
-        <Symbol fontSize={fontSize} symbolColor={symbolColor} symbol={symbol}>
+        <Symbol symbolColor={symbolColor} symbol={symbol}>
           {symbol}
         </Symbol>
-        <Name name={name} NAMEfontSize={NAMEfontSize} cpkHexColor={cpkHexColor}>
+        <Name name={name}>
           {name}
         </Name>
-        <AtomicMass atomicMass={atomicMass} AMfontSize={AMfontSize}>
+        <AtomicMass atomicMass={atomicMass} >
           {atomicMass}
         </AtomicMass>
-        {isPreview && (
-          <UL>
-            {atomicRadius && (
-              <LI atomicRadius={atomicRadius}>
-                Atomic radius: <LI>{atomicRadius}pm</LI>
-              </LI>
-            )}
-            {boilingPoint && (
-              <LI boilingPoint={boilingPoint}>
-                Boiling point: <LI>{boilingPoint} °C</LI>
-              </LI>
-            )}
-            {bondingType && (
-              <LI bondingType={bondingType}>
-                Bonding type: <LI>{bondingType}</LI>
-              </LI>
-            )}
-            {density && (
-              <LI density={density}>
-                Density: <LI>{density}</LI>
-              </LI>
-            )}
-            {electronAffinity && (
-              <LI electronAffinity={electronAffinity}>
-               Electron affinity: <LI>{electronAffinity}</LI>
-              </LI>
-            )}
-            {electronegativity && (
-              <LI electronegativity={electronegativity}>
-                Electron negativity: <LI>{electronegativity}</LI>
-              </LI>
-            )}
-            {electronicConfiguration && (
-              <LI electronicConfiguration={electronicConfiguration}>
-                Electron configuration: <LI>{electronicConfiguration}</LI>
-              </LI>
-            )}
-            {groupBlock && (
-              <LI groupBlock={groupBlock}>
-                Group: <LI>{groupBlock}</LI>
-              </LI>
-            )}
-            {ionRadius && (
-              <LI ionRadius={ionRadius}>
-                Ion Radius: <LI>{ionRadius}</LI>
-              </LI>
-            )}
-            {ionizationEnergy && (
-              <LI ionizationEnergy={ionizationEnergy}>
-                Ionization energy: <LI>{ionizationEnergy}</LI>
-              </LI>
-            )}
-            {meltingPoint && (
-              <LI meltingPoint={meltingPoint}>
-                Melting point: <LI>{meltingPoint}</LI>
-              </LI>
-            )}
-            {oxidationStates && (
-              <LI oxidationStates={oxidationStates}>
-                Bonding type: <LI>{oxidationStates}</LI>
-              </LI>
-            )}
-            {standardState && (
-              <LI standardState={standardState}>
-                State: <LI>{standardState}</LI>
-              </LI>
-            )}
-            {vanDelWaalsRadius && (
-              <LI vanDelWaalsRadius={vanDelWaalsRadius}>
-                Van Del Waals Radius: <LI>{vanDelWaalsRadius}</LI>
-              </LI>
-            )}
-            {yearDiscovered && (
-              <LI yearDiscovered={yearDiscovered}>
-                Year discovered: <LI>{yearDiscovered}</LI>
-              </LI>
-            )}
-          </UL>
-        )}
       </CardContainer>
     </CustomLink>
   );

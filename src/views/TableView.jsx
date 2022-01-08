@@ -64,7 +64,7 @@ const NumbersLeft = styled.div`
   background-color: ${(props) => props.bgColor || "#232323"};
 `;
 export const H1 = styled.h1`
-  font-size: 4rem;
+  font-size: calc(3rem + 1vw);
   color: whitesmoke;
   font-weight: 400;
   filter: brightness(2);
@@ -109,7 +109,7 @@ const LabelTitles = styled.div`
 `;
 const P = styled.p`
   margin: 1vw;
-  font-size: 1.25rem;
+  font-size: calc(0.5rem + 0.75vw);
 `;
 const Dot = styled.div`
   background-color: ${(props) => props.bgColor || "gray"};
